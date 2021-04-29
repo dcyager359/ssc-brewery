@@ -21,7 +21,6 @@ public abstract class BaseIT {
     @Autowired
     WebApplicationContext wac;
 
-
     protected MockMvc mockMvc;
 
     @MockBean
