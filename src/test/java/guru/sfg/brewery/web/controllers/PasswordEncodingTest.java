@@ -2,10 +2,8 @@ package guru.sfg.brewery.web.controllers;
 
 import org.assertj.core.internal.bytebuddy.asm.Advice;
 import org.junit.jupiter.api.Test;
-import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.*;
 import org.springframework.util.DigestUtils;
 import org.thymeleaf.cache.StandardParsedTemplateEntryValidator;
 
@@ -14,6 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PasswordEncodingTest {
 
     public static final String PASSWORD = "password";
+
+
+    @Test
+    void testDelegatingEncoder() {
+
+        PasswordEncoder bcrypt = new BCryptPasswordEncoder();
+        System.out.println(bcrypt.encode(PASSWORD));
+        System.out.println(bcrypt.encode(PASSWORD));
+        System.out.println(bcrypt.encode(PASSWORD));
+    }
 
     @Test
     void testSha256() {

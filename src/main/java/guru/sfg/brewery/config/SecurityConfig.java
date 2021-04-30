@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.LdapShaPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-        return new StandardPasswordEncoder();
+        return new BCryptPasswordEncoder();
+//        return new StandardPasswordEncoder();
 //        return new LdapShaPasswordEncoder();
     }
 
@@ -55,11 +57,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN")
                 .and()
                 .withUser("user")
-                .password("2304b583b46ae830da819463b9459346eb1e5aeb980ba673aafc82d81097e67fb18430e82bd40db8")
+                .password("$2a$10$hWO/FlobY/iM5.EgmWi19uNaKKJC2PtfGvVUSMGASM17dgmpTBKJe")
                 .roles("USER")
                 .and()
                 .withUser("scott")
-                .password("0f3df7ac7813429dcd5057a440904b5133397458c220764d92ba7c36ef02322f33d3d578468295f5")
+                .password("$2a$10$hWO/FlobY/iM5.EgmWi19uNaKKJC2PtfGvVUSMGASM17dgmpTBKJe")
                 .roles("CUSTOMER");
     }
 
