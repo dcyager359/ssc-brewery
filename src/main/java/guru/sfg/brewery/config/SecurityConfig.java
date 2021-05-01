@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER")
                 .and()
                 .withUser("scott")
-                .password("{ldap}{SSHA}fsMDsUF5YNMWnrMhLHlS1a6GwgNMlksvpFUGAg==")
+                .password("{bcrypt15}$2a$15$7vD86i36UnJ/Oph5lyOg.eO.BaXW5/KLasJ.THme856Q/OMzBvTtO")
                 .roles("CUSTOMER");
     }
 
